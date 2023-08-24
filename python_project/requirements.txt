@@ -1,0 +1,7 @@
+tkinterdnd2~=0.3.0
+pandas~=1.5.3
+nlplot~=1.6.0
+matplotlib~=3.7.1
+plotly~=5.13.1
+spacy~=3.4.4
+ja_ginza~=5.1.2
