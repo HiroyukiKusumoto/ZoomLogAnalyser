@@ -129,6 +129,15 @@ class SettingsConfig(BaseConfig):
     def __init__(self):
         super().__init__("settings.json")
         self.load_config()
+        self.set_dirs()
+
+    def set_dirs(self):
+        """設定された保存用ディレクトリが存在しなければ作成"""
+        io_dict = self.config_dict["io_config_tab"]
+        for key in io_dict:
+            if isinstance(io_dict[key], str):
+                if not Path(io_dict[key]).exists():
+                    Path(io_dict[key]).mkdir(parents=True)
 
 
 class PresetsConfig(BaseConfig):
