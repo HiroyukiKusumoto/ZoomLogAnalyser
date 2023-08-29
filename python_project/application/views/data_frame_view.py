@@ -171,8 +171,6 @@ class DataFrameView(tk.Toplevel):
 
     def move_window(self):
         g_list = re.split(r"[x+]", self.geometry())
-        print(self.geometry())
-        print(g_list)
         if int(g_list[0]) + int(g_list[2]) > self.winfo_screenwidth():
             self.geometry(f"+0+{g_list[3]}")
 
