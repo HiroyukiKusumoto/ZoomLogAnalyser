@@ -43,7 +43,7 @@ class MemActsDetailSelectionToplevel(tk.Toplevel):
         self.isu_area.pack(padx=10, pady=5)
 
         isu = InclusionSettingUnit(
-            self.isu_area.interior, name_list=self.name_list
+            self.isu_area.main_frame, name_list=self.name_list
         )
         isu.add_button.bind(
             sequence="<ButtonPress>", func=self._add_isu
@@ -68,7 +68,7 @@ class MemActsDetailSelectionToplevel(tk.Toplevel):
             id_ += 1
 
         new_isu = InclusionSettingUnit(
-            self.isu_area.interior, name_list=self.name_list
+            self.isu_area.main_frame, name_list=self.name_list
         )
         new_isu.add_button.bind(
             sequence="<ButtonPress>", func=self._add_isu
