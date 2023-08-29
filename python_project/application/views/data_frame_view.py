@@ -23,14 +23,14 @@ class DataFrameView(tk.Toplevel):
         self.table_frame.canvas.config(yscrollcommand="")
         # df内容を表示するtreeview
         self.table = ttk.Treeview(
-            self.table_frame.interior,
+            self.table_frame.main_frame,
             selectmode=tk.NONE,
             show="headings",
             height=25,
-            yscrollcommand=self.table_frame.vscrollbar.set
+            yscrollcommand=self.table_frame.y_scrollbar.set
         )
         # スクロールバーをtreeviewに関連付け
-        self.table_frame.vscrollbar.config(command=self.table.yview)
+        self.table_frame.y_scrollbar.config(command=self.table.yview)
 
         self.table.pack()
         self.table_frame.pack(expand=True, fill=tk.BOTH)
