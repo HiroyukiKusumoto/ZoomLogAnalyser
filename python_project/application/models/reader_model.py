@@ -48,22 +48,44 @@ def read_txt_file(date_str, title, file_path=None):
                         del chat_list[-1]
                     # 行頭8文字は時刻
                     chat_time = line[0:8]
-                    # DM以外は発言者名の前後が定型文のためその部分を除き発言者名を取得
-                    name = line[12:-7]
-                    # 新しいチャット辞書を作成
-                    chat_element = {
-                        "date": date_str,
-                        "title": title,
-                        "time": chat_time,
-                        "name": name,
-                        "text": "",
-                        "reply": ""
-                    }
-                    # 行末が定型文になっていないものはDMのため削除対象に指定
-                    if line[-7:] != " に 全員:\n":
-                        chat_element["delete_flag"] = True
-                    # 用意した新規辞書をリストに挿入
-                    chat_list.append(chat_element.copy())
+                    # ログのシステムメッセージの言語を確認
+                    if line[8:12] == " 開始 ":
+                        # 日本語の場合
+                        # DM以外は発言者名の前後が定型文のためその部分を除き発言者名を取得
+                        name = line[12:-7]
+                        # 新しいチャット辞書を作成
+                        chat_element = {
+                            "date": date_str,
+                            "title": title,
+                            "time": chat_time,
+                            "name": name,
+                            "text": "",
+                            "reply": ""
+                        }
+                        # 行末が定型文になっていないものはDMのため削除対象に指定
+                        if line[-7:] != " に 全員:\n":
+                            chat_element["delete_flag"] = True
+                        # 用意した新規辞書をリストに挿入
+                        chat_list.append(chat_element.copy())
+
+                    elif line[8:14] == " From ":
+                        # 英語の場合
+                        # DM以外は発言者名の前後が定型文のためその部分を除き発言者名を取得
+                        name = line[14:-14]
+                        # 新しいチャット辞書を作成
+                        chat_element = {
+                            "date": date_str,
+                            "title": title,
+                            "time": chat_time,
+                            "name": name,
+                            "text": "",
+                            "reply": ""
+                        }
+                        # 行末が定型文になっていないものはDMのため削除対象に指定
+                        if line[-14:] != " To Everyone:\n":
+                            chat_element["delete_flag"] = True
+                        # 用意した新規辞書をリストに挿入
+                        chat_list.append(chat_element.copy())
 
                 # 行頭がタブである:チャット本文のためリスト末尾の辞書に本文を挿入
                 else:

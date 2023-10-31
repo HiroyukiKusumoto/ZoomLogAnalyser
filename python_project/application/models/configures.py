@@ -53,8 +53,12 @@ class BaseConfig(object):
 
     def save_config(self):
         """設定を保存"""
-        with open(self.config_path, "w") as f:
-            json.dump(self.config_dict, f, indent=4, ensure_ascii=False)
+        try:
+            with open(self.config_path, "w") as f:
+                json.dump(self.config_dict, f, indent=4, ensure_ascii=False)
+        except UnicodeEncodeError:
+            with open(self.config_path, "w") as f:
+                json.dump(self.config_dict, f, indent=4)
 
 
 class SettingsConfig(BaseConfig):

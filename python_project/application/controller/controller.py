@@ -6,7 +6,7 @@ from tkinter import ttk
 import pandas as pd
 
 try:
-    from ..models import configures, decorators, io_model, merger_model, plotter_model, reader_model, s1_word_selector_model, s3_selector_model, temp_storage, word_analyser_model
+    from ..models import *
     from ..views.applicaiton_view import ApplicationView
     from ..views.applicaiton_view import MainWindow
     from ..views.config_view import ConfigToplevel
@@ -18,7 +18,7 @@ try:
 except ImportError:
     import sys
     sys.path.append("../../")
-    from application.models import configures, decorators, io_model, merger_model, plotter_model, reader_model, s1_word_selector_model, s3_selector_model, temp_storage, word_analyser_model
+    from application.models import *
     from application.views.applicaiton_view import ApplicationView
     from application.views.applicaiton_view import MainWindow
     from application.views.config_view import ConfigToplevel
